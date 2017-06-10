@@ -1,0 +1,54 @@
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{positioning}
+
+\tikzstyle{ptr} = [-{Latex[length=2.7mm]}]
+
+\tikzstyle{block} = [
+    draw,
+    align=center,
+    rectangle,
+    minimum height=0.8cm,
+    minimum width=1.6cm
+]
+
+\begin{tikzpicture}
+
+    % main
+    \begin{scope}[node distance = 1cm and -0.5cm]
+        \node[block] (1)                      {\ttfamily main:};
+        \node[block] (2) [below       = of 1] {\ttfamily argc < 2};
+        \node[block] (3) [below left  = of 2] {\ttfamily print\_usage()};
+        \node[block] (4) [below right = of 2] {\ttfamily print\_something(\dots)};
+        \node[block] (5) [below right = of 3] {\ttfamily return};
+
+        \path[ptr] (1) edge (2)
+                   (2) edge node[left]  {F} (3)
+                   (2) edge node[right] {T} (4)
+                   (3) edge (5)
+                   (4) edge (5);
+    \end{scope}
+
+    % print_usage
+    \node[block] (6) [below left = of 5] {\ttfamily print\_usage:};
+    \node[block] (7) [below      = of 6] {\ttfamily puts(\dots)};
+    \node[block] (8) [below      = of 7] {\ttfamily return};
+
+    \path[ptr] (6) edge (7)
+               (7) edge (8);
+
+    % print something
+    \node[block] (9)  [below right = of  5] {\ttfamily print\_something:};
+    \node[block] (10) [below       = of  9] {\ttfamily i = 0};
+    \node[block] (11) [below       = of 10] {\ttfamily i < times};
+    \node[block] (12) [below left  = of 11] {\ttfamily puts(\dots)};
+    \node[block] (13) [above       = of 12] {\ttfamily ++i};
+    \node[block] (14) [below       = of 11] {\ttfamily return};
+
+    \path[ptr] (9)  edge (10)
+               (10) edge (11)
+               (11) edge node[left]  {T} (12)
+               (11) edge node[right] {F} (14)
+               (12) edge (13)
+               (13) edge (11);
+
+\end{tikzpicture}

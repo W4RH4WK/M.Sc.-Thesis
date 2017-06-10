@@ -1,0 +1,63 @@
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{positioning}
+
+\tikzstyle{ptr} = [
+	-{Latex[length=1.8mm]},
+	dashed,
+	shorten <= 0.2cm,
+	shorten >= 0.2cm,
+	bend left
+]
+
+\begin{tikzpicture}[every node/.style={minimum width=1cm},
+                    level 1/.style={sibling distance=4.5cm},
+                    level 2/.style={sibling distance=2.0cm}]
+
+	\node (1) {\{\}}
+		child {
+			node (2) {$=$}
+			child { node (3) {$a$} }
+			child { node (4) {$6$} }
+		}
+		child {
+			node (5) {$=$}
+			child { node (6) {$b$} }
+			child { node (7) {$7$} }
+		}
+		child {
+			node (8) {call}
+			child { node (9)  {$b$} }
+			child { node (10) {$a$} }
+			child { node (11) {$f$} }
+		}
+	;
+
+	\foreach \n in {1,...,11} {
+		\fill [black,opacity=.5] (\n.west) circle (1.5pt);
+		\fill [black,opacity=.5] (\n.east) circle (1.5pt);
+	}
+
+	\path[ptr] (2.west)  edge                (1.west)
+	           (3.west)  edge                (2.west)
+	           (3.east)  edge                (3.west)
+	           (4.west)  edge                (3.east)
+	           (4.east)  edge                (4.west)
+	           (2.east)  edge                (4.east)
+	           (5.west)  edge[bend right=15] (2.east)
+	           (6.west)  edge                (5.west)
+	           (6.east)  edge                (6.west)
+	           (7.west)  edge                (6.east)
+	           (7.east)  edge                (7.west)
+	           (5.east)  edge                (7.east)
+	           (8.west)  edge[bend right=15] (5.east)
+	           (9.west)  edge                (8.west)
+	           (9.east)  edge                (9.west)
+	           (10.west) edge                (9.east)
+	           (10.east) edge                (10.west)
+	           (11.west) edge                (10.east)
+	           (11.east) edge                (11.west)
+	           (8.east)  edge                (11.east)
+	           (1.east)  edge                (8.east)
+	;
+
+\end{tikzpicture}

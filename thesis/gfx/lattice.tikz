@@ -1,0 +1,28 @@
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{positioning}
+
+\begin{tikzpicture}[node distance = 0.7cm and 0.5cm]
+
+    \node (1)                      {$\{i,j,k\}$};
+    \node (2) [below left  = of 1] {$\{i,j\}$};
+    \node (3) [below       = of 1] {$\{i,k\}$};
+    \node (4) [below right = of 1] {$\{j,k\}$};
+    \node (5) [below       = of 2] {$\{i\}$};
+    \node (6) [below       = of 3] {$\{j\}$};
+    \node (7) [below       = of 4] {$\{k\}$};
+    \node (8) [below       = of 6] {$\emptyset$};
+
+    \path (1) edge (2)
+          (1) edge (3)
+          (1) edge (4)
+          (2) edge (5)
+          (2) edge (6)
+          (3) edge (5)
+          (3) edge (7)
+          (4) edge (6)
+          (4) edge (7)
+          (5) edge (8)
+          (6) edge (8)
+          (7) edge (8);
+
+\end{tikzpicture}

@@ -1,0 +1,53 @@
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{positioning}
+
+\tikzstyle{ptr} = [
+	{Latex[length=1.8mm]}-,
+]
+
+\begin{tikzpicture}[every node/.style={minimum width=1.5cm},
+                    edge from parent/.style={draw,ptr},
+                    level 1/.style={sibling distance=1.5cm},
+                    level 2/.style={sibling distance=1.0cm}]
+
+	\node (1) {$+$}
+		child {
+			node {$1$}
+		}
+		child {
+			node {$\times$}
+			child { node {$2$} }
+			child { node {$3$} }
+		}
+	;
+
+	\begin{scope}[level 1/.style={sibling distance=4.5cm},
+	              level 2/.style={sibling distance=2.0cm}]
+		\node [right = 3cm of 1] (2) {$\{x + y \mid x \in v_0, y \in v_3\} \subseteq v_4$}
+			child {
+				node {$\{1\} \subseteq v_0$}
+			}
+			child {
+				node {$\{x \times y \mid  x \in v_1, y \in v_2\} \subseteq v_3$}
+				child { node {$\{2\} \subseteq v_1$} }
+				child { node {$\{3\} \subseteq v_2$} }
+			}
+		;
+	\end{scope}
+
+	\node [right = 4cm of 2] (3) {$\{7\}$}
+		child {
+			node {$\{1\}$}
+		}
+		child {
+			node {$\{6\}$}
+			child { node {$\{2\}$} }
+			child { node {$\{3\}$} }
+		}
+	;
+
+	\node [above of = 1] {IR};
+	\node [above of = 2] {Variable / Constraint};
+	\node [above of = 3] {Assignment};
+
+\end{tikzpicture}
