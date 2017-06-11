@@ -2,6 +2,8 @@
 
 > Putting a HAT on Insieme
 
+[View standalone HTML (7.6 MB)](output/thesis.html)
+
 ## Abstract
 
 This document provides an insight into the Haskell-based Analysis Toolkit (HAT), allowing developers and researchers to rapidly prototype and develop static program analyses.
