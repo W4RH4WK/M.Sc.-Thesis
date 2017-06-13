@@ -456,7 +456,7 @@ extern "C" {
 
 This import and the wrapper around it (next code snippet) both go into a new source file `out_of_bounds_analysis.cpp`.
 
-```{.cpp` .numberLines}
+```{.cpp .numberLines}
 // Namespace: insieme::analysis::cba::haskell
 
 OutOfBoundsResult getOutOfBounds(Context& ctxt, const core::CallExprAddress& call) {
