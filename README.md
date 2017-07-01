@@ -2,7 +2,7 @@
 
 > Putting a HAT on Insieme
 
-[View standalone HTML (7.6 MB)](output/thesis.html)
+[View standalone HTML (7.6 MB)](https://w4rh4wk.github.io/M.Sc.-Thesis/output/thesis.html)
 
 ## Abstract
 
